@@ -1,5 +1,26 @@
-/* showroom/css/styles.css */
+
 
 body {
     background-color: #000080; /* Replace with your desired grey color */
 }
+
+
+
+#container {
+    margin-bottom: 34px;
+}
+
+.filter-area {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.filter-input {
+    padding: 5px;
+}
+
+/* This might need to be corrected: */
+.btn.btn-warning {
+    align-items: self-end;
+}
+
