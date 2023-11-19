@@ -33,7 +33,23 @@
   </div>
   <hr>
 </div>
-
+<div class="container">
+  <div class="row">
+    {% for profile in profiles %}
+    <div class="col-md-4 card-filter" data-name="{{ profile.name|lower }}" data-variant="{{ profile.variant|lower }}" data-year="{{ profile.year|lower }}">
+      <div class="card">
+        <img class="card-img-top" src="{{ profile.pic.url }}" alt="Profile picture" width="300" height="200">
+        <div class="card-body">
+          <h5 class="card-title">{{ profile.name }}</h5>
+          <p class="card-text"> {{ profile.year }}</p>
+          <a href="{% url 'showroom:profiles' profile.id %}" class="btn btn-primary">View Profile</a>
+        </div>
+      </div>
+      <p></p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function () {
