@@ -1,75 +1,33 @@
 {% extends 'showroom/base.html' %}
-{% load static %}
 {% block content %}
-<style>
-  #container {
-    margin-bottom: 34px;
-  }
+<div class="container" id="container">
+    <div class="text-left mb-3">
+        <span class="filter-area">
+            <input id="nameFilter" class="filter-input" type="text" placeholder="Search by Name">
+        </span>
+        <span class="filter-area">
+            <input id="yearFilter" class="filter-input" type="text" placeholder="Search by Year">
+        </span>
 
-  .filter-area {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  .filter-input {
-    padding: 5px;
-  }
-  .btn btn-warning {
-    align-items:self-end;
-  }
-</style>
-<div class="container">
-
-  </div>
-  <div class="text-left mb-3">
-    <span  class="filter-area">
-        <input id="nameFilter" class="filter-input" type="text" placeholder="Search by Name">
-    </span>
-      <span class="filter-area">
-        <input id="yearFilter" class="filter-input" type="text" placeholder="Search by Year">
-      </span>
-      
-    <a href="{% url 'showroom:new_profile' %}" type="button" class="btn btn-warning" >SELL YOUR CAR</a>
-  </div>
-  <hr>
-</div>
-<div class="container">
-  <div class="row">
-    {% for profile in profiles %}
-    <div class="col-md-4 card-filter" data-name="{{ profile.name|lower }}" data-variant="{{ profile.variant|lower }}" data-year="{{ profile.year|lower }}">
-      <div class="card">
-        <img class="card-img-top" src="{{ profile.pic.url }}" alt="Profile picture" width="300" height="200">
-        <div class="card-body">
-          <h5 class="card-title">{{ profile.name }}</h5>
-          <p class="card-text"> {{ profile.year }}</p>
-          <a href="{% url 'showroom:profiles' profile.id %}" class="btn btn-primary">View Profile</a>
-        </div>
-      </div>
-      <p></p>
+        <a href="{% url 'showroom:new_profile' %}" type="button" class="btn btn-warning">SELL YOUR CAR</a>
     </div>
-    {% endfor %}
-  </div>
+    <hr>
 </div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function () {
-      $("#nameFilter, #yearFilter").on("keyup", function () {
-        var nameFilterText = $("#nameFilter").val().toLowerCase();
-        var yearFilterText = $("#yearFilter").val().toLowerCase();
-  
-        $(".card-filter").hide();
-        $(".card-filter").each(function () {
-          var name = $(this).data("name").toLowerCase();
-          var year = $(this).data("year").toLowerCase();
-  
-          if (
-            (nameFilterText === "" || name.includes(nameFilterText)) &&
-            (yearFilterText === "" || year.includes(yearFilterText))
-          ) {
-            $(this).show();
-          }
-        });
-      });
-    });
-  </script>
-  {% endblock %}
+<div class="container">
+    <div class="row">
+        {% for profile in profiles %}
+        <div class="col-md-4 card-filter" data-name="{{ profile.name|lower }}" data-variant="{{ profile.variant|lower }}" data-year="{{ profile.year|lower }}">
+            <div class="card">
+                <img class="card-img-top" src="{{ profile.pic.url }}" alt="Profile picture" width="300" height="200">
+                <div class="card-body">
+                    <h5 class="card-title">{{ profile.name }}</h5>
+                    <p class="card-text"> {{ profile.year }}</p>
+                    <a href="{% url 'showroom:profiles' profile.id %}" class="btn btn-primary">View Profile</a>
+                </div>
+            </div>
+            <p></p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
