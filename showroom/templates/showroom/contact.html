@@ -1,0 +1,26 @@
+{% extends 'showroom/base.html' %}
+{% load static %}
+{% block content %}
+<h1>Contact US!</h1>
+    <form method="post">
+        <div class="form-group">
+            {{ form.name.label_tag }}
+            <input type="text" class="form-control" name="{{ form.name.name }}">
+        </div>
+        <div class="form-group">
+            {{ form.email.label_tag }}
+            <input type="email" class="form-control" name="{{ form.email.name }}">
+        </div>
+        <div class="form-group">
+            {{ form.variant.label_tag }}
+            <input type="number" class="form-control" name="{{ form.variant.name }}">
+        </div>
+        <div class="form-group">
+            {{ form.add.label_tag }}
+            <textarea class="form-control" name="{{ form.add.name }}"></textarea>
+        </div>
+
+        {% csrf_token %}
+        <input type="submit" class="btn btn-primary" value="Submit">
+    </form>
+{% endblock %}

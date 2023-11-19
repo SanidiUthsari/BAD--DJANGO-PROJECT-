@@ -1,0 +1,59 @@
+{% extends 'showroom/base.html' %}
+{% load static %}
+{% block content %}
+<style>
+  #container {
+    margin-bottom: 34px;
+  }
+
+  .filter-area {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .filter-input {
+    padding: 5px;
+  }
+  .btn btn-warning {
+    align-items:self-end;
+  }
+</style>
+<div class="container">
+
+  </div>
+  <div class="text-left mb-3">
+    <span  class="filter-area">
+        <input id="nameFilter" class="filter-input" type="text" placeholder="Search by Name">
+    </span>
+      <span class="filter-area">
+        <input id="yearFilter" class="filter-input" type="text" placeholder="Search by Year">
+      </span>
+      
+    <a href="{% url 'showroom:new_profile' %}" type="button" class="btn btn-warning" >SELL YOUR CAR</a>
+  </div>
+  <hr>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+      $("#nameFilter, #yearFilter").on("keyup", function () {
+        var nameFilterText = $("#nameFilter").val().toLowerCase();
+        var yearFilterText = $("#yearFilter").val().toLowerCase();
+  
+        $(".card-filter").hide();
+        $(".card-filter").each(function () {
+          var name = $(this).data("name").toLowerCase();
+          var year = $(this).data("year").toLowerCase();
+  
+          if (
+            (nameFilterText === "" || name.includes(nameFilterText)) &&
+            (yearFilterText === "" || year.includes(yearFilterText))
+          ) {
+            $(this).show();
+          }
+        });
+      });
+    });
+  </script>
+  {% endblock %}
