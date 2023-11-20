@@ -1,0 +1,18 @@
+{% extends 'auction/base.html' %}
+
+{% block content %}
+<h2>Place Bid for {{ profile.name }}</h2>
+
+{% if user.is_authenticated %}
+    <form method="post" action="{% url 'auction:place_bid' profile.id %}">
+        {% csrf_token %}
+        <label for="bid_price">Bid Price:</label>
+        <input type="number" name="bid_price" required>
+        <button type="submit">Place Bid</button>
+    </form>
+{% else %}
+    <p>Please <a href="{% url 'account:login' %}">log in</a> to place a bid.</p>
+{% endif %}
+
+<a href="{% url 'auction:profile_detail' profile.id %}">Back to Profile Details</a>
+{% endblock %}
