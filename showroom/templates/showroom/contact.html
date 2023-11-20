@@ -4,23 +4,23 @@
 <h1>Contact US!</h1>
     <form method="post">
         <div class="form-group">
-            {{ form.name.label_tag }}
-            <input type="text" class="form-control" name="{{ form.name.name }}">
+        <strong style="font-weight: bold;">{{ form.name.label_tag }}</strong><br>
+        <input type="text" class="form-control" style="width: 200px;" name="{{ form.name.name }}">
+        </div>
+       <div class="form-group">
+        <strong style="font-weight: bold;">{{ form.email.label_tag|add:'Email:' }}</strong><br>
+        <input type="email" class="form-control" style="width: 200px;" name="{{ form.email.name }}">
         </div>
         <div class="form-group">
-            {{ form.email.label_tag }}
-            <input type="email" class="form-control" name="{{ form.email.name }}">
+        <strong style="font-weight: bold;">{{ form.variant.label_tag }}</strong><br>
+        <input type="text" class="form-control" style="width: 150px;" name="{{ form.variant.name }}">
         </div>
         <div class="form-group">
-            {{ form.variant.label_tag }}
-            <input type="number" class="form-control" name="{{ form.variant.name }}">
-        </div>
-        <div class="form-group">
-            {{ form.add.label_tag }}
-            <textarea class="form-control" name="{{ form.add.name }}"></textarea>
+        <strong style="font-weight : bold;">{{ form.add.label_tag }}</strong><br>
+        <textarea class="form-control" style="width: 300px; height: 100px;" name="{{ form.add.name }}"></textarea>
         </div>
 
         {% csrf_token %}
-        <input type="submit" class="btn btn-primary" value="Submit">
+        <input type="submit" class="btn btn-primary" value="SUBMIT" style="background-color: #FFA500; border-color: black; color: black; margin-top: 10px;">
     </form>
 {% endblock %}
