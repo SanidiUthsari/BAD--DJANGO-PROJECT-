@@ -1,32 +1,23 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">ASIA MOTORS</a>
-    <div class="mr-auto">
-        <ul class="navbar-nav">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(to right,#4682B4, #000080, #191970, #000000);">
+    <div class="container">
+        <!-- Left-aligned items -->
+        <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'account:login' %}">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'account:register' %}">SignUp</a>
+                <a class="nav-link btn btn-outline-dark mr-2" href="{% url 'showroom:home_list' %}" style="border-width: 2px;">Home</a>
             </li>
         </ul>
-    </div>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+
+        <!-- Brand name in the middle -->
+        <a class="navbar-brand mx-auto" href="#">AUTO LANKA</a>
+
+        <!-- Right-aligned items -->
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="{% url 'showroom:home_list' %}">Home</a>
-            </li>
-            <!-- Add more links as needed -->
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'showroom:contact' %}">Contact Us</a>
+                <a class="nav-link btn btn-outline-dark mr-2" href="{% url 'account:login' %}" style="border-width: 2px;">Login</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'account:logout' %}">Logout</a>
+                <a class="nav-link btn btn-outline-dark" href="{% url 'account:register' %}" style="border-width: 2px;">SignUp</a>
             </li>
         </ul>
     </div>
 </nav>
-
