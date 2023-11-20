@@ -23,6 +23,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("account", include('account.urls')),
     path("", include('showroom.urls')),
+    path("auction/", include('auction.urls')),  # Add this line to include the auction app URLs,
     
 ]
 
