@@ -1,0 +1,10 @@
+{% extends 'auction/base.html' %}
+
+{% block content %}
+<h2>Available Profiles for Bidding</h2>
+<ul>
+    {% for profile in profiles %}
+        <li><a href="{% url 'auction:profile_detail' profile.id %}">{{ profile.name }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}
