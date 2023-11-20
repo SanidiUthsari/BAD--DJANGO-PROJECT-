@@ -1,18 +1,19 @@
 {% extends 'account/base.html' %}
 {% load static %}
 {% block content %}
-<div class = 'container'>
-<h1 class ='container'>PLEASE LOGIN YOUR ACCOUNT TO CONTINUE</h1>
-<br><br>
-    <form method="post">
+<div class = 'container border p-4'style="border-width: 2px; width: 70%;">
+    <h1 class ='container'style="color:#191970;">Account Sign In</h1>
+    <br><br>
+        <form method="post">
 
-        {% csrf_token %}
-        {{ form.as_p }}
+            {% csrf_token %}
+            {{ form.as_p }}
 
-        <button type="submit" class="btn btn-primary">Login</button>
-    </form>
+            <button type="submit" class="btn" style="background-color: #DAA520; color: black; border: 2px solid black;">Login</button>
+        </form>
 
-    <p>Do not have an Account?</p>
-    <a href="{% url 'account:register' %}">Register Here</a>
+        <p style="margin-top: 20px;"><em>Do not have an Account?</em></p>
+        <a href="{% url 'account:register' %}" style="margin-bottom: 20px;">Register Here</a>
 </div>
-{% endblock %}
+<br>
+{% endblock %}}
