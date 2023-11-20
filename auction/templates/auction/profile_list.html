@@ -1,10 +1,25 @@
 {% extends 'auction/base.html' %}
 
+
 {% block content %}
 <h2>Available Profiles for Bidding</h2>
 <ul>
     {% for profile in profiles %}
-        <li><a href="{% url 'auction:profile_detail' profile.id %}">{{ profile.name }}</a></li>
+        <li>
+            <a href="{% url 'auction:profile_detail' profile.id %}">{{ profile.name }}</a>
+            <p>Bid Start Date: {{ profile.bid_start_date }}</p>
+            <p>Bid End Date: {{ profile.bid_end_date }}</p>
+            
+            {% with winning_bid=profile.get_winning_bid %}
+                {% if winning_bid %}
+                    <p style="color: green;">Winner: {{ winning_bid.user.username }}</p>
+                    <p style="color: green;">Winning Bid Amount: {{ winning_bid.bid_price }}</p>
+                {% endif %}
+            {% endwith %}
+            
+        </li>
     {% endfor %}
 </ul>
 {% endblock %}
+
+
