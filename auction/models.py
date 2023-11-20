@@ -11,3 +11,7 @@ class Bid(models.Model):
 
     def __str__(self):
         return f"Bid by {self.user.username} on {self.profile.name}"
+    
+    @classmethod
+    def get_highest_bid(cls, profile):
+        return cls.objects.filter(profile=profile).order_by('-bid_price').first()

@@ -18,7 +18,12 @@ def profile_detail(request, profile_id):
     profile = get_object_or_404(Profile, pk=profile_id)
     return render(request, 'auction/profile_detail.html', {'profile': profile})
 
-@login_required(login_url='account:login')  # This decorator ensures that the user is logged in
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Bid
+from showroom.models import Profile
+from django.contrib.auth.decorators import login_required
+
+@login_required(login_url='account:login')
 def place_bid(request, profile_id):
     profile = get_object_or_404(Profile, pk=profile_id)
 
@@ -27,6 +32,15 @@ def place_bid(request, profile_id):
         # Validate bid_price and handle the bidding logic
 
         Bid.objects.create(profile=profile, user=request.user, bid_price=bid_price)
+
+        # Determine the winning bid
+        winning_bid = Bid.objects.filter(profile=profile).order_by('-bid_price').first()
+
+        # Mark the winning bid
+        if winning_bid:
+            winning_bid.is_winner = True
+            winning_bid.save()
+
         # Redirect to a success page or back to the profile details page
         return redirect('auction:profile_list')
 
