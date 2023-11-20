@@ -12,9 +12,9 @@
                     <div class="col-md-8">
                         <div class="card-body">
                             <h5 class="card-title">{{ profile.name }}</h5>
-                            <p class="card-text"><small class="text-muted">{{ profile.variant }} </small></p>
                             <p class="card-text">
-                                <strong>YEAR OF MANUFACTURING :</strong> {{ profile.year  }}<br>
+                                <strong>MODEL:</strong> {{ profile.variant }}<br>
+                                <strong>MODELED YEAR :</strong> {{ profile.year  }}<br>
                                 <strong>INSURANCE:</strong>
                                 {% if profile.insured %}
                                     Insured
@@ -22,8 +22,8 @@
                                     Not Insured
                                 {% endif %}
                                 <br>
-                                <strong>DEMAND</strong> {{ profile.price }}<br>
-                                <strong>CONTACT</strong> {{ profile.contact }}<br>
+                                <strong>MARKET PRICE:</strong> {{ profile.price }}<br>
+                                <strong>CONTACT EMAIL:</strong> {{ profile.contact }}<br>
                             </p>
                             <a href="{% url 'showroom:home_list' %}" class="btn btn-primary">Back</a>
                         </div>
