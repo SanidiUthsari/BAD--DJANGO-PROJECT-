@@ -30,7 +30,15 @@ def ContactView(request):
     
     return render (request, 'showroom/contact.html', {'form':form})
 
-@login_required
+
+    
+# showroom/views.py
+from django.shortcuts import render, redirect
+from django.forms import formset_factory
+from .forms import ProfileForm
+from .models import Profile
+
+@login_required(login_url='account:login')
 def newView(request):
     profile_formset = formset_factory(ProfileForm, extra=1)
 
@@ -40,14 +48,23 @@ def newView(request):
         if formset.is_valid():
             for form in formset:
                 if form.has_changed():
-                  
-                    form.save()
+                    profile = form.save(commit=False)
+                    profile.bid_start_date = form.cleaned_data['bid_start_date']
+                    profile.bid_end_date = form.cleaned_data['bid_end_date']
+                    profile.save()
 
-            return redirect('showroom:home_list')  # Corrected line
+            return redirect('showroom:home_list')
 
     else:
         formset = profile_formset()
 
     return render(request, 'showroom/new_profile.html', {'formset': formset})
-    
-    
+
+from django.shortcuts import render
+from .models import Profile
+from django.contrib.auth.decorators import login_required
+
+@login_required(login_url='account:login')
+def profileListView(request):
+    profiles = Profile.objects.all()
+    return render(request, 'showroom/home_list.html', {'profiles': profiles})

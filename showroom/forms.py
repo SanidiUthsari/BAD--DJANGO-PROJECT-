@@ -15,8 +15,11 @@ class ContactForm(forms.Form):
 
         return cleaned_data
 
+
 class ProfileForm(forms.ModelForm):
+    bid_start_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date', 'placeholder': 'YYYY-MM-DD'}))
+    bid_end_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date', 'placeholder': 'YYYY-MM-DD'}))
+
     class Meta:
         model = Profile 
-        fields = "__all__"    
-
+        fields = "__all__"

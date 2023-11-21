@@ -1,4 +1,5 @@
 {% extends 'showroom/base.html' %}
+
 {% block content %}
 <div class="container" id="container">
     <div class="text-left mb-3">
@@ -8,7 +9,6 @@
         <span class="filter-area">
             <input id="yearFilter" class="filter-input" type="text" placeholder="Search by Year">
         </span>
-
         <a href="{% url 'showroom:new_profile' %}" type="button" class="btn btn-warning">SELL YOUR CAR</a>
     </div>
     <hr>
@@ -21,8 +21,15 @@
                 <img class="card-img-top" src="{{ profile.pic.url }}" alt="Profile picture" width="300" height="200">
                 <div class="card-body">
                     <h5 class="card-title">{{ profile.name }}</h5>
-                    <p class="card-text"> {{ profile.year }}</p>
+                    <p class="card-text">{{ profile.year }}</p>
                     <a href="{% url 'showroom:profiles' profile.id %}" class="btn btn-primary">View Profile</a>
+                    {% with formatted_bid_end_date=profile.bid_end_date|date:'Y-m-d H:i:s' %}
+                        {% if formatted_bid_end_date > now %}
+                            <a href="{% url 'auction:place_bid' profile.id %}" class="btn btn-success">Place Bid</a>
+                        {% else %}
+                            <p>Bidding Closed</p>
+                        {% endif %}
+                    {% endwith %}               
                 </div>
             </div>
             <p></p>

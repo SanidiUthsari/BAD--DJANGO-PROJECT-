@@ -24,6 +24,9 @@ class Profile(models.Model):
     bid_start_date = models.DateTimeField()
     bid_end_date = models.DateTimeField()
 
+    def get_winning_bid(self):
+        return self.bid_set.filter(is_winner=True).first()
+
 
     def save(self, *args, **kwargs):
         print(f"Data Updated for {self.name}")
