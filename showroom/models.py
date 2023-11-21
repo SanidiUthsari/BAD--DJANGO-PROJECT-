@@ -21,6 +21,11 @@ class Profile(models.Model):
     Mileage = models.PositiveIntegerField(help_text= "In KMs", null = True, blank = True)
     
     contact  = models.EmailField(null = True)
+    bid_start_date = models.DateTimeField()
+    bid_end_date = models.DateTimeField()
+
+    def get_winning_bid(self):
+        return self.bid_set.filter(is_winner=True).first()
 
 
     def save(self, *args, **kwargs):
