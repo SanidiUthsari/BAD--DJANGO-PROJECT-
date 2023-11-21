@@ -16,6 +16,9 @@
                 </div>
                 <p class="mb-1">Bid End Date: {{ profile.bid_end_date|date:"F d, Y" }}</p>
 
+                <!-- Add a <span> element to display the remaining time -->
+                <p class="mb-1">Time Remaining: <span class="remaining-time" data-bid-end="{{ profile.bid_end_date|date:'Y-m-d H:i:s' }}"></span></p>
+
                 {% with winning_bid=profile.get_winning_bid %}
                     {% if winning_bid %}
                         <p class="text-success">Winner: {{ winning_bid.user.username }}</p>
@@ -26,4 +29,40 @@
         {% endfor %}
     </ul>
 </div>
+
+<script>
+    // Update the remaining time for each profile
+    document.addEventListener("DOMContentLoaded", function () {
+        var timers = document.querySelectorAll('.remaining-time');
+        timers.forEach(function (timer) {
+            updateRemainingTime(timer);
+        });
+
+        // Set up a timer to update the remaining time every minute (adjust as needed)
+        setInterval(function () {
+            timers.forEach(function (timer) {
+                updateRemainingTime(timer);
+            });
+        }, 2000); // 60000 milliseconds = 1 minute
+    });
+
+    function updateRemainingTime(timer) {
+        var bidEndDate = new Date(timer.dataset.bidEnd).getTime();
+        var now = new Date().getTime();
+
+        var timeRemaining = bidEndDate - now;
+
+        if (timeRemaining <= 0) {
+            timer.innerHTML = "Bidding Closed";
+        } else {
+            var days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+            timer.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+        }
+    }
+</script>
+
 {% endblock %}

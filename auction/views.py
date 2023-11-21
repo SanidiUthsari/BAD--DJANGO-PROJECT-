@@ -29,13 +29,16 @@ from django.utils import timezone
 def place_bid(request, profile_id):
     profile = get_object_or_404(Profile, pk=profile_id)
 
+    # Check if bidding is still open
+    if timezone.now() >= profile.bid_end_date:
+        return render(request, 'auction/bidding_closed.html', {'profile': profile})
+
     if request.method == 'POST':
         bid_price = request.POST.get('bid_price')
         # Validate bid_price and handle the bidding logic
 
         Bid.objects.create(profile=profile, user=request.user, bid_price=bid_price)
 
-        # Check if the bid end date has passed
         # Check if the bid end date has passed
         if timezone.now() >= profile.bid_end_date:
             # Determine the highest bid after the bid end date
