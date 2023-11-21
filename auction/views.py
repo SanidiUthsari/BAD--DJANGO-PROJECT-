@@ -36,14 +36,16 @@ def place_bid(request, profile_id):
         Bid.objects.create(profile=profile, user=request.user, bid_price=bid_price)
 
         # Check if the bid end date has passed
+        # Check if the bid end date has passed
         if timezone.now() >= profile.bid_end_date:
-            # Determine the winning bid after the bid end date
-            winning_bid = Bid.objects.filter(profile=profile).order_by('-bid_price').first()
+            # Determine the highest bid after the bid end date
+            highest_bid = Bid.objects.filter(profile=profile).order_by('-bid_price').first()
 
-            # Mark the winning bid
-            if winning_bid:
-                winning_bid.is_winner = True
-                winning_bid.save()
+            # Mark the highest bid as the winner
+            if highest_bid:
+                Bid.objects.filter(profile=profile).exclude(id=highest_bid.id).update(is_winner=False)
+                highest_bid.is_winner = True
+                highest_bid.save()
 
         # Redirect to a success page or back to the profile details page
         return redirect('auction:profile_list')
