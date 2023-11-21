@@ -1,22 +1,56 @@
 <body>
-<div style="background-color: #ADD8E6;">
-    <hr style="border: 1px solid black; margin-top: 20px;">
-    <h1 style="color: #00008B; text-align: center; margin-top: 20px;">Membership Options</h1>
-    <p style="text-align: center;">Join our exclusive car membership for benefits like discounts on services, priority appointments, and special offers.</p>
+<div style="background-color: #DCDCDC;">
 
-    <div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; margin-top: 30px;">
-        <div style="flex: 1; margin: 10px; border: 1px solid #ccc; padding: 20px; border-radius: 10px; background-color: #ffffff;">
-            <h2 style="margin-top: 0; text-align: center;">Basic $99</h2>
-            <p style="text-align: center;">Includes access to standard services and occasional discounts.</p>
+    <hr style="border: 1px solid rgba(0, 0, 0, 0.5); margin-top: 20px;">
+    <h1 style="color: #00008B; text-align: center; margin-top: 20px; font-weight: bold; font-family: 'Arial', sans-serif;">MEMBERSHIP OPTIONS</h1>
+    <h5 style="text-align: center; color: #000000; margin: 0 150px;">
+    Enroll in our distinguished car membership program to access a spectrum of privileges, encompassing discounted services, expedited priority bookings, and bespoke, limited-time offers meticulously crafted to elevate and redefine your automotive experience with us.
+</h5>
+    <br>
+<div style="display: flex; justify-content: center; font-family: Arial, sans-serif;">
+  <ul style="list-style: none; padding: 0; display: flex;">
+    <li style="color: black; display: flex; align-items: center; margin-right: 20px;">
+      <span style="color: #00008B; margin-right: 5px;">✔</span> ANNUAL PAYMENT
+    </li>
+    <li style="color: black; display: flex; align-items: center; margin-right: 20px;">
+      <span style="color: #00008B; margin-right: 5px;">✔</span> REFUND AVAILABLE
+    </li>
+    <li style="color: black; display: flex; align-items: center;">
+      <span style="color: #00008B; margin-right: 5px;">✔</span> INFINITY ACCESS
+    </li>
+  </ul>
+</div>
+    <div style="display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-top: 30px;">
+
+        <div style="flex: 1;
+        margin: 10px;
+        border: 1px solid #ccc;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #ffffff;">
+            <h2 style="margin-top: 0; text-align: center; font-family: Arial, sans-serif; font-weight: bold; color: #00008B;">Essential Seller</h2>
+            <p style="text-align: center;">Our Starter Package, the Essential Seller tier, empowers newcomers with essential tools. Create 5 detailed listings, connect with buyers, and access basic analytics for performance insights. Perfect for those starting their car-selling journey, offering a straightforward approach to online sales.</p>
+            <strong style="display: block; text-align: center; color: green;">Starting from LKR 5,000</strong>
         </div>
+      <div style="flex: 1; margin: 10px; border: 1px solid #ccc; padding: 20px; border-radius: 10px; background-color: #ffffff;">
+            <h2 style="margin-top: 0; text-align: center; font-family: Arial, sans-serif; font-weight: bold; color: #00008B;">Premium Seller</h2>
+            <p style="text-align: center;">The Premium Seller tier, our Advanced Package, elevates visibility and sales potential. Gain priority placement, unlimited listings, and detailed analytics for effective selling strategies. Utilize promotional tools and dedicated support for optimized selling, perfect for sellers seeking increased exposure and advanced insights.</p>
+            <strong style="display: block; text-align: center; color: green;">Starting from LKR 10,000</strong>
+      </div>
+
         <div style="flex: 1; margin: 10px; border: 1px solid #ccc; padding: 20px; border-radius: 10px; background-color: #ffffff;">
-            <h2 style="margin-top: 0; text-align: center;">Premium $200</h2>
-            <p style="text-align: center;">Unlock access to premium services, exclusive offers, and priority support.</p>
+            <h2 style="margin-top: 0; text-align: center; font-family: Arial, sans-serif; font-weight: bold; color: #00008B;">Elite Seller</h2>
+            <p style="text-align: center;">Our Professional Package, the Elite Seller tier, caters to high-volume sellers and dealerships. Enjoy VIP placement, dedicated account management, specialized promotions, advanced security, and exclusive discounts. Tailored for top-tier sellers aiming for maximum exposure, security, and market dominance.</p>
+            <strong style="display: block; text-align: center; color: green;">Starting from LKR 50,000</strong>
         </div>
     </div>
 
     <div style="text-align: center; margin-top: 20px;">
-        <a href="{% url 'account:register' %}" class="btn btn-outline-dark" style="background-color: #DAA520; color: black; padding: 10px 20px; text-decoration: none;">Register Now</a>
+        <a href="{% url 'account:register' %}" class="btn btn-outline-dark" style="background-color: #DAA520; color: black; padding: 10px 20px; text-decoration: none;">BECOME A MEMBER</a>
     </div>
     <br>
 </div>
