@@ -1,8 +1,9 @@
-from django.shortcuts import render , redirect
+from django.shortcuts import render, redirect
 from .models import Profile
 from .forms import ContactForm , ProfileForm
 from django.forms import formset_factory
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
 
 # Create your views here.
@@ -60,4 +61,19 @@ def newView(request):
 
     return render(request, 'showroom/new_profile.html', {'formset': formset})
 
-    
+def search_profiles(request):
+
+    query_name = request.GET.get('query')
+    query_year = request.GET.get('year')
+
+    filtered_profiles = Profile.objects.all()
+
+    if query_name:
+        filtered_profiles = filtered_profiles.filter(Q(name__icontains=query_name) | Q(variant__icontains=query_name))
+
+    if query_year:
+        filtered_profiles = filtered_profiles.filter(year=query_year)
+
+
+    return render(request, 'showroom/search_results.html',
+              {'filtered_profiles': filtered_profiles, 'query_name': query_name, 'query_year': query_year})

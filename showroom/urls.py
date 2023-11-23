@@ -9,4 +9,5 @@ urlpatterns = [
     path('<int:Profile_id>', views.profiledetailView, name='profiles'),
     path('contact/', views.ContactView, name='contact'),
     path('new_profile', views.newView, name='new_profile'),
+    path('search/', views.search_profiles, name='search_profiles'),
 ]
