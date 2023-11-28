@@ -2,31 +2,16 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <!-- Search bar on the right side -->
-        <div class="col-md-4 order-md-2">
-            <div class="text-left mb-3">
-                <br>
-                <a href="{% url 'showroom:new_profile' %}" type="button" class="btn btn-warning">SELL YOUR VEHICLE</a>
-            </div>
-            <h3>Find your vehicle</h3>
-            <form method="GET" action="{% url 'showroom:search_profiles' %}">
-                <input type="text" name="query" placeholder="Search profiles...">
-                <br>
-                <input type="number" name="year" placeholder="Filter by year">
-                <br><br>
-                <button type="submit" class="btn btn-warning">Search</button>
-            </form>
-        </div>
-        <!-- End of search bar -->
 
-        <!-- Profiles on the left side -->
-        <div class="col-md-8 order-md-1">
+        <!-- End of Search Bar Section -->
+
+        <!-- Profiles Section -->
+        <div class="row" style="background-color: #B0C4DE;">
             <div class="row">
-
                 <hr>
                 {% for profile in profiles %}
                 <div class="col-md-4 card-filter" data-name="{{ profile.name|lower }}" data-variant="{{ profile.variant|lower }}" data-year="{{ profile.year|lower }}">
-                    <div class="card">
+                    <div class="card" style="background-color: #F5FFFA;">
                         <img class="card-img-top" src="{{ profile.pic.url }}" alt="Profile picture" width="300" height="200">
                         <div class="card-body">
                             <h5 class="card-title">{{ profile.name }}</h5>
@@ -39,9 +24,7 @@
                 {% endfor %}
             </div>
         </div>
-        <!-- End of profiles -->
+        <!-- End of Profiles Section -->
     </div>
 </div>
 {% endblock %}
-
-
