@@ -77,3 +77,6 @@ def search_profiles(request):
 
     return render(request, 'showroom/search_results.html',
               {'filtered_profiles': filtered_profiles, 'query_name': query_name, 'query_year': query_year})
+    
+def about_us_view(request):
+    return render(request, 'showroom/Aboutus.html')
