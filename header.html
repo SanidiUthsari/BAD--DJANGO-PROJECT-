@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(to left,#4682B4, #000080, #191970, #000000);">
+    <div class="container">
+        <!-- Left-aligned items -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                MENU
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-light mr-2" href="{% url 'showroom:home_list' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-light mr-2" href="{% url 'showroom:contact' %}">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-light" href="{% url 'auction:profile_list' %}">Bid on Profiles</a>
+                    </li>
+                    <!-- New "About Us" button -->
+                    <li class="nav-item">
+                         <a class="nav-link btn btn-outline-dark mr-2" href="{% url 'showroom:Aboutus' %}" style="border-width: 2px;">About Us</a>
+
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+        <a href="{% url 'showroom:new_profile' %}" type="button" class="btn btn-warning">SELL YOUR VEHICLE</a>
+    </div>
+</nav>
