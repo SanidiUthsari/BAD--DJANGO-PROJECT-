@@ -1,6 +1,18 @@
 {% extends 'showroom/base.html' %}
 {% block content %}
 <div class="container mt-4">
+    <form method="GET" action="">
+        <label for="sort">Sort by:</label>
+        <select name="sort" id="sort">
+            <option value="">Select an option</option>
+            <option value="name">Brand</option>
+            <option value="variant">Model</option>
+            <option value="year">Year</option>
+            <option value="price">Bidding price</option>
+        </select>
+        <button type="submit">Sort</button>
+    </form>
+    
     <div class="row justify-content-center">
         <ul class="pagination">
             {% if profiles.has_previous %}
