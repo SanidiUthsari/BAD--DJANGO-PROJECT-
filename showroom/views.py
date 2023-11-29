@@ -6,10 +6,20 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 
 
-# Create your views here.
 def profileListView(request):
-    profiles = Profile.objects.all()
-    return render( request, 'showroom/home_list.html', {'profiles' :profiles})
+    sort_by = request.GET.get('sort')
+
+    if sort_by not in ['name', 'variant', 'year']:
+        sort_by = 'bid_end_date'
+
+    # Fetch profiles and apply sorting
+    all_profiles = Profile.objects.all().order_by(sort_by)
+    paginator = Paginator(all_profiles, 6)
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'showroom/home_list.html', {'profiles': page_obj})
 
 @login_required
 def profiledetailView(request,Profile_id):
