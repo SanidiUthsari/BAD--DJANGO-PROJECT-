@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
 from .models import Profile
 from .forms import ContactForm , ProfileForm
