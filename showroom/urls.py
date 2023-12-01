@@ -11,5 +11,4 @@ urlpatterns = [
     path('new_profile', views.newView, name='new_profile'),
     path('search/', views.search_profiles, name='search_profiles'),
     path('Aboutus/', views.about_us_view, name='Aboutus'),
-    path('Inventory/', views.Inventory_view, name='Inventory'),
 ]

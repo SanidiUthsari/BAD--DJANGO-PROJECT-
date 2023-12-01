@@ -1,95 +1,37 @@
 {% extends 'showroom/base.html' %}
 {% load static %}
-
 {% block content %}
 <div class="container mt-5">
-    <!-- Profile Name Card -->
-    <div class="row mb-4">
-        <div class="col-md-12">
-            <div class="card shadow-lg rounded">
-                <div class="card-body">
-                    <h2 class="text-center" style="color: #00008B">{{ profile.name }}</h2>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Big Box Section -->
     <div class="row">
-        <div class="col-md-12">
-            <div class="card shadow-lg rounded">
-                <div class="card-body">
-
-                    <!-- Vehicle Image, Vehicle Details, and Bid Information Section -->
-                    <div class="row">
-                        <!-- Vehicle Image Section -->
-                        <div class="col-md-4">
-                            <div class="card shadow-lg rounded">
-                                <img src="{{ profile.pic.url }}" class="img-fluid" alt="Vehicle Image">
-                            </div>
-                        </div>
-
-                        <!-- Vehicle Details Section -->
-                        <div class="col-md-4">
-                            <div class="card shadow-lg rounded">
-                                <div class="card-body">
-                                    <h3 class="card-title text-center">Vehicle Details</h3>
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item"><strong>Variant:</strong> {{ profile.variant }}</li>
-                                        <li class="list-group-item"><strong>Engine:</strong> {{ profile.engine }}</li>
-                                        <li class="list-group-item"><strong>Engine Details:</strong> Add details here</li>
-                                        <li class="list-group-item"><strong>Model Year:</strong> {{ profile.year }}</li>
-                                        <li class="list-group-item">
-                                            <strong>Insurance:</strong>
-                                            {% if profile.insured %}
-                                                Insured
-                                            {% else %}
-                                                Not Insured
-                                            {% endif %}
-                                        </li>
-                                        <li class="list-group-item"><strong>Price:</strong> LKR {{ profile.price }}</li>
-                                        <li class="list-group-item"><strong>Mileage:</strong> {{ profile.Mileage }} KMs</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Bid Information Section -->
-                        <div class="col-md-4">
-                            <div class="card shadow-lg rounded">
-                                <div class="card-body">
-                                    <h3 class="card-title text-center">Bid Information</h3>
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item"><strong>Start Date:</strong> {{ profile.bid_start_date }}</li>
-                                        <li class="list-group-item"><strong>End Date:</strong> {{ profile.bid_end_date }}</li>
-                                        <li class="list-group-item">
-                                            <strong>Winning Bid:</strong>
-                                            {% with winning_bid=profile.get_winning_bid %}
-                                                {% if winning_bid %}
-                                                    {{ winning_bid.amount }} ({{ winning_bid.bidder.username }})
-                                                {% else %}
-                                                    No winning bid yet.
-                                                {% endif %}
-                                            {% endwith %}
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="{{ profile.pic.url }}" class="card-img" alt="Profile picture" width="300px" height="200px">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h3 class="card-title" style="color: #00008B">{{ profile.name }}</h3>
+                            <p class="card-text">
+                                <strong style="color: grey">{{ profile.name }}</strong> {{ profile.variant }} <br><br>
+                                <strong>MODEL:</strong> {{ profile.variant }}<br>
+                                <strong>MODELED YEAR :</strong> {{ profile.year  }}<br>
+                                <strong>INSURANCE:</strong>
+                                {% if profile.insured %}
+                                    Insured
+                                {% else %}
+                                    Not Insured
+                                {% endif %}
+                                <br>
+                                <strong>MARKET PRICE:</strong> <span style="color: green; font-weight: bold">LKR {{ profile.price }}</span><br>
+                                <strong>CONTACT EMAIL:</strong> {{ profile.contact }}<br>
+                            </p>
+                            <a href="{% url 'showroom:home_list' %}" class="btn btn-primary">Back</a>
                         </div>
                     </div>
-
                 </div>
             </div>
-        </div>
-    </div>
-
-    <!-- Back Button Section -->
-    <div class="row mt-4">
-        <div class="col-md-12 text-center">
-            <a href="{% url 'showroom:home_list' %}" class="btn btn-primary">Back</a>
         </div>
     </div>
 </div>
 {% endblock %}
-
-

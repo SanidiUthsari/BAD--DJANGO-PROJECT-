@@ -1,21 +1,18 @@
 <div class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(to left,#4682B4, #000080, #191970, #000000);">
-<div class="row">
-    <form method="GET" action="{% url 'showroom:search_profiles' %}" class="d-flex align-items-start w-100 ml-3">
-        <input type="text" name="query" placeholder="Search vehicle..." class="form-control border-0 rounded-lg mr-3" style="width: 50%;">
-        <input type="number" name="year" placeholder="Filter by year" class="form-control border-0 rounded-lg mr-3" style="width: 30%;">
-        <button type="submit" class="btn btn-warning rounded-lg">Search</button>
-    </form>
-</div>
-
-
-
-
-
+    <div class="row">
+        <form method="GET" action="{% url 'showroom:search_profiles' %}" class="d-flex align-items-start w-100 ml-3">
+            <div class="form-group rounded-pill overflow-hidden">
+                <input type="text" name="query" placeholder="Search profiles..." class="form-control border-0 rounded-pill">
+            </div>
+            <div class="form-group rounded-pill ml-2 overflow-hidden">
+                <input type="number" name="year" placeholder="Filter by year" class="form-control border-0 rounded-pill">
+            </div>
+            <button type="submit" class="btn btn-warning rounded-pill ml-2 mt-1">Search</button>
+        </form>
+    </div>
     <a class="navbar-brand mx-auto" href="#">
-    <img src="https://i.imgur.com/0EiboL1.png" alt="Auto Lanka Logo" height="40" width="auto">
-    <span class="text-light" style="font-weight: bold; letter-spacing: 2px; font-size: 24px;">AUTO </span>
-        <span class="text" style="font-weight: bold; letter-spacing: 2px; font-size: 24px; color: #DAA520;">LANKA</span>
-
+    <img src="https://images.vexels.com/media/users/3/147726/isolated/preview/3c35c23c922833a71a94e7d5faf28b88-car-sale-service-logo-by-vexels.png" alt="Auto Lanka Logo" height="40" width="auto">
+    <span class="text-light">AUTO LANKA</span>
     </a>
     <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -25,6 +22,9 @@
         </li>
         <li class="nav-item d-none d-lg-block">
             <a class="nav-link btn btn-dark text-white" href="{% url 'account:register' %}" style="border-width: 2px;">SignUp</a>
+        </li>
+        <li class="nav-item d-none d-lg-block">
+            <a class="nav-link btn btn-outline-dark" href="{% url 'account:logout' %}" style="border-width: 2px;">Logout</a>
         </li>
     </ul>
 </div>

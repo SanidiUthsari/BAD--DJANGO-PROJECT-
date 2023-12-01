@@ -4,24 +4,37 @@
 
 {% if filtered_profiles %}
     <h2>Search Results for "{{ query_name }} {{ query_year }}"</h2>
-<div class="container">
-    <div class="row">
+    <ul>
         {% for profile in filtered_profiles %}
-        <div class="col-md-4">
-            <div class="card shadow mb-4" style="border-radius: 30px;">
-                <img class="card-img-top" src="{{ profile.pic.url }}" alt="Profile picture" style="height: 200px; object-fit: cover;">
-                    <div class="card-body text-center">
-                        <h5 class="card-title text-uppercase font-weight-bold">{{ profile.year }} {{ profile.name }}</h5>
-                        <span class="d-block" style="color: #00008B; font-weight: bold;">Model: {{ profile.variant }}</span>
-                        <span class="d-block" style="color: green; font-weight: bold;">Current Bid: LKR {{ profile.price }}</span>
-                        <a href="{% url 'showroom:profiles' profile.id %}" class="btn btn-warning mt-3">View Profile</a>
+        <div class="card">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="{{ profile.pic.url }}" class="card-img" alt="Profile picture" width="300px" height="200px">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h3 class="card-title" style="color: #00008B">{{ profile.name }}</h3>
+                        <p class="card-text">
+                            <strong style="color: grey">{{ profile.name }}</strong> {{ profile.variant }} <br><br>
+                            <strong>MODEL:</strong> {{ profile.variant }}<br>
+                            <strong>MODELED YEAR :</strong> {{ profile.year  }}<br>
+                            <strong>INSURANCE:</strong>
+                            {% if profile.insured %}
+                                Insured
+                            {% else %}
+                                Not Insured
+                            {% endif %}
+                            <br>
+                            <strong>MARKET PRICE:</strong> <span style="color: green; font-weight: bold">LKR {{ profile.price }}</span><br>
+                            <strong>CONTACT EMAIL:</strong> {{ profile.contact }}<br>
+                        </p>
+                        <a href="{% url 'showroom:home_list' %}" class="btn btn-primary">Back</a>
                     </div>
-
+                </div>
             </div>
         </div>
         {% endfor %}
-    </div>
-</div>
+    </ul>
 {% else %}
     <p>No profiles found for "{{ query }}" in {{ year }}</p>
 {% endif %}
