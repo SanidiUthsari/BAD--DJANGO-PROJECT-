@@ -1,26 +1,63 @@
 {% extends 'showroom/base.html' %}
 {% load static %}
 {% block content %}
-<h1>Contact US!</h1>
-    <form method="post">
-        <div class="form-group">
-        <strong style="font-weight: bold;">{{ form.name.label_tag }}</strong><br>
-        <input type="text" class="form-control" style="width: 200px;" name="{{ form.name.name }}">
-        </div>
-       <div class="form-group">
-        <strong style="font-weight: bold;">{{ form.email.label_tag|add:'Email:' }}</strong><br>
-        <input type="email" class="form-control" style="width: 200px;" name="{{ form.email.name }}">
-        </div>
-        <div class="form-group">
-        <strong style="font-weight: bold;">{{ form.variant.label_tag }}</strong><br>
-        <input type="text" class="form-control" style="width: 150px;" name="{{ form.variant.name }}">
-        </div>
-        <div class="form-group">
-        <strong style="font-weight : bold;">{{ form.add.label_tag }}</strong><br>
-        <textarea class="form-control" style="width: 300px; height: 100px;" name="{{ form.add.name }}"></textarea>
-        </div>
+<body>
+        <div class="container-fluid  py-5">
+            <div class="container rounded-lg" style="background-color: #2F4F4F;">
+                <div class="row">
+                    <div class="col-md-6 text-center pt-4">
+                        <h2 style="font-weight: bold; color: #F5F5DC;">Get in Touch</h2>
+                        <p class="pt-4" style="font-weight: bold; text-align: justify; color: #F5F5DC;">
+                            Connect with us to unlock a world of opportunities for your car selling journey. Our dedicated team ensures personalized support, from understanding your unique needs to providing tailored solutions. Get expert guidance, reach a wider audience, and maximize your selling potential with us. Your success is our priority.Experience seamless assistance and personalized strategies tailored to elevate your car selling experience. Join us to access exclusive perks and amplify your sales journey effortlessly.
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="https://blog.saleslogs.com/hubfs/Car%20salesperson%20using%20an%20automotive%20business%20intelligence%20platform%20to%20help%20a%20customer%20over%20the%20phone.jpg#keepProtocol" class="img-fluid" alt="Contact Image">
+                    </div>
+                </div>
+            </div>
+         </div>
 
-        {% csrf_token %}
-        <input type="submit" class="btn btn-primary" value="SUBMIT" style="background-color: #FFA500; border-color: black; color: black; margin-top: 10px;">
-    </form>
+
+    <div class="container mt-4">
+        <div class="row">
+           <div class="col-md-6">
+    <div class="p-4 rounded" style="background-color: #B0C4DE;">
+        <h2 style="font-weight: bold; text-align: center; color: #000;">Contact US!</h2><br>
+        <p style="text-align: center;">Contact our dedicated support team at:<br><br>
+        Phone: +94 71 0 123 456<br>
+        Email: support@autolanka.lk<br>
+        Address: 1234 Park road, Colombo-05</p>
+        <p style="text-align: center;font-weight: bold;">"Reliable support at your fingertips. We're here to assist you every step of the way!"</p>
+    </div>
+</div>
+
+            <div class="col-md-6">
+                <div class="p-4 rounded" style="background-color: #B0C4DE;">
+                    <h3 style="font-weight: bold; text-align: center; ">Talk to a advisor!</h3>
+                    <p>We will get back you soon!</p>
+                            <form method="post">
+                    <div class="form-group">
+                        <strong style="font-weight: bold;">{{ form.name.label_tag }}</strong><br>
+                        <input type="text" class="form-control" style="width: 300px;" name="{{ form.name.name }}">
+                    </div>
+                    <div class="form-group">
+                        <strong style="font-weight: bold;">{{ form.email.label_tag|add:'Email:' }}</strong><br>
+                        <input type="email" class="form-control" style="width: 350px;" name="{{ form.email.name }}">
+                    </div>
+                    <div class="form-group">
+                        <strong style="font-weight : bold;">{{ form.add. }}Inquiry:</strong><br>
+                        <textarea class="form-control" style="width: 400px; height: 100px;" name="{{ form.add.name }}"></textarea>
+                    </div>
+
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-primary" value="SUBMIT" style="background-color: #FFA500; border-color: black; color: black; margin-top: 10px;">
+                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
 {% endblock %}
+
