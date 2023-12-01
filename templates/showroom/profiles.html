@@ -1,0 +1,37 @@
+{% extends 'showroom/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="{{ profile.pic.url }}" class="card-img" alt="Profile picture" width="300px" height="200px">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h3 class="card-title" style="color: #00008B">{{ profile.name }}</h3>
+                            <p class="card-text">
+                                <strong style="color: grey">{{ profile.name }}</strong> {{ profile.variant }} <br><br>
+                                <strong>MODEL:</strong> {{ profile.variant }}<br>
+                                <strong>MODELED YEAR :</strong> {{ profile.year  }}<br>
+                                <strong>INSURANCE:</strong>
+                                {% if profile.insured %}
+                                    Insured
+                                {% else %}
+                                    Not Insured
+                                {% endif %}
+                                <br>
+                                <strong>MARKET PRICE:</strong> <span style="color: green; font-weight: bold">LKR {{ profile.price }}</span><br>
+                                <strong>CONTACT EMAIL:</strong> {{ profile.contact }}<br>
+                            </p>
+                            <a href="{% url 'showroom:home_list' %}" class="btn btn-primary">Back</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

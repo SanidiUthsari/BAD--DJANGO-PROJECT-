@@ -1,0 +1,30 @@
+{% load static %}
+{% now 'Y-m-d H:i:s' as now %}
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Load Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+     <!-- Link your CSS file -->
+    <title>AUTO LANKA | The No.1 Car Selling Platform</title>
+</head>
+<body>
+    {% include 'showroom/search_bar.html' %}
+    {% include 'showroom/header.html' %}
+
+    <br>
+
+    <p></p>
+
+    <main role="main" class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    {% include 'showroom/membership.html' %}
+    {% include 'showroom/footer.html' %}
+
+    <!-- Load Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

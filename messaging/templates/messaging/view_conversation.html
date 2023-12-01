@@ -1,0 +1,28 @@
+<!-- messaging/templates/messaging/view_conversation.html -->
+
+{% extends 'messaging/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">{{ receiver.username }}</h2>
+    <ul class="list-group">
+        {% for message in message_thread %}
+            <li class="list-group-item">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h6 class="mb-0">{{ message.sender.username }}</h6>
+                    <small class="text-muted">{{ message.timestamp|date:"F d, Y H:i" }}</small>
+                </div>
+                <p class="mb-1">{{ message.content }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <form method="post" class="mt-4">
+        {% csrf_token %}
+        <div class="form-group">
+            <textarea name="content" class="form-control" placeholder="Type your message..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+    </form>
+</div>
+{% endblock %}

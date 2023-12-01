@@ -1,0 +1,100 @@
+{% extends 'showroom/base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <form method="GET" action="">
+        <label for="sort">Sort by:</label>
+        <select name="sort" id="sort">
+            <option value="">Select an option</option>
+            <option value="name">Brand</option>
+            <option value="variant">Model</option>
+            <option value="year">Year</option>
+            <option value="price">Bidding price</option>
+        </select>
+        <button type="submit">Sort</button>
+    </form>
+    
+    <div class="row justify-content-center">
+        <ul class="pagination">
+            {% if profiles.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page=1">&laquo; First</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ profiles.previous_page_number }}">Previous</a>
+            </li>
+            {% endif %}
+
+            <li class="page-item disabled">
+                <span class="page-link">
+                    Page {{ profiles.number }} of {{ profiles.paginator.num_pages }}
+                </span>
+            </li>
+
+            {% if profiles.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ profiles.next_page_number }}">Next</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ profiles.paginator.num_pages }}">Last &raquo;</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+<br>
+<div class="container">
+    <div class="row">
+        {% for profile in profiles %}
+        <div class="col-md-4">
+            <div class="card rounded-lg-lg shadow mb-4">
+                <img class="card-img-top" src="{{ profile.pic.url }}" alt="Profile picture" style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ profile.name }} {{ profile.variant }}</h5>
+                    <span style="color: green; font-weight: bold">LKR {{ profile.price }}</span>
+                    <p class="card-text">{{ profile.year }}</p>
+                    <a href="{% url 'showroom:profiles' profile.id %}" class="btn btn-primary">View Profile</a>
+                    {% with formatted_bid_end_date=profile.bid_end_date|date:'Y-m-d H:i:s' %}
+                        {% if formatted_bid_end_date > now %}
+                            <a href="{% url 'auction:place_bid' profile.id %}" class="btn btn-success">Place Bid</a>
+                        {% else %}
+                            <p>Bidding Closed</p>
+                        {% endif %}
+                    {% endwith %} 
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Pagination Controls -->
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <ul class="pagination">
+            {% if profiles.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page=1">&laquo; First</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ profiles.previous_page_number }}">Previous</a>
+            </li>
+            {% endif %}
+
+            <li class="page-item disabled">
+                <span class="page-link">
+                    Page {{ profiles.number }} of {{ profiles.paginator.num_pages }}
+                </span>
+            </li>
+
+            {% if profiles.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ profiles.next_page_number }}">Next</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ profiles.paginator.num_pages }}">Last &raquo;</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
