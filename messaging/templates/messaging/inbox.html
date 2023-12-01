@@ -1,0 +1,10 @@
+{% extends 'messaging/base.html' %}
+
+{% block content %}
+    <h2>Inbox</h2>
+    <ul>
+        {% for message in received_messages %}
+            <li>{{ message.content }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
