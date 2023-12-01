@@ -1,7 +1,7 @@
 {% extends 'showroom/base.html' %}
 {% load static %}
 {% block content %}
-<h2 style="font-family: 'Arial', sans-serif; text-align: center;">Find Your Vehicle!</h2>
+<h2 style="font-weight: bold; font-family: 'Arial', sans-serif; text-align: center;">Find Your Vehicle!</h2>
 <div class="container" style="max-width: 600px; margin: 0 auto; border-radius: 30px; border: 2px solid #DCDCDC; background:#F5FFFA;">
     <h6 style="text-align: center; background-color: #FFD700; color: black; padding: 4px;border-radius: 30px;">Vehicle Finder</h6>
     <form method="GET" action="{% url 'showroom:search_profiles' %}">
@@ -44,9 +44,11 @@
             <input type="number" name="engine" class="form-control" placeholder="Enter engine capacity">
         </div>
 
-
-        <button type="submit" class="btn btn-warning">Search</button>
+        <div class="form-group text-center">
+        <button type="submit" class="btn btn-warning rounded-lg">Find</button>
+        </div>
     </form>
 </div>
+<br>
 
 {% endblock %}
