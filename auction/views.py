@@ -10,8 +10,11 @@ from django.shortcuts import render, get_object_or_404, redirect
 
 
 
+@login_required(login_url='account:login')
 def profile_list(request):
-    profiles = Profile.objects.all()
+    # Order profiles by bid_start_date in descending order
+    profiles = Profile.objects.filter(bid_start_date__lte=timezone.now()).order_by('-bid_start_date')
+
     return render(request, 'auction/profile_list.html', {'profiles': profiles})
 
 def profile_detail(request, profile_id):

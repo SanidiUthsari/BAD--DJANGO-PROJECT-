@@ -1,15 +1,30 @@
 {% extends 'auction/base.html' %}
 
 {% block content %}
-<h2>{{ profile.name }} Details</h2>
-<p>Variant: {{ profile.variant }}</p>
-<!-- Add other profile details as needed -->
+<div class="container mt-4">
+    <h2>{{ profile.name }}</h2>
+    <p>Variant: {{ profile.variant }}</p>
+    <p>Price: ${{ profile.price }}</p>    
+    <p>Bid Start Date: {{ profile.bid_start_date|date:"F d, Y H:i" }}</p>
+    <p>Bid End Date: {{ profile.bid_end_date|date:"F d, Y H:i" }}</p>
 
-<h3>Place Bid</h3>
-<form method="post" action="{% url 'auction:place_bid' profile.id %}">
-    {% csrf_token %}
-    <label for="bid_price">Bid Price:</label>
-    <input type="number" name="bid_price" required>
-    <button type="submit">Place Bid</button>
-</form>
+    <!-- Additional information for bidding -->
+    {% if profile.bid_end_date > timezone.now %}
+        <p>Time Remaining: {{ profile.bid_end_date|timeuntil }}</p>
+        <p>Current Highest Bid: {{ profile.get_highest_bid_amount|default:"No bids yet" }}</p>
+    {% else %}
+        <p>Bidding Closed</p>
+        <p>Final Winning Bid: {{ profile.get_final_winning_bid_amount|default:"No bids" }}</p>
+    {% endif %}
+
+    <!-- Bidding form -->
+    <form method="post" action="{% url 'auction:place_bid' profile.id %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="bid_price">Your Bid:</label>
+            <input type="number" name="bid_price" step="any" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Place Bid</button>
+    </form>
+</div>
 {% endblock %}
