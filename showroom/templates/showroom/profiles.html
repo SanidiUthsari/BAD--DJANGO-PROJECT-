@@ -1,12 +1,15 @@
 {% extends 'showroom/base.html' %}
 {% load static %}
 
+{% extends 'showroom/base.html' %}
+{% load static %}
+
 {% block content %}
 <div class="container mt-5">
     <!-- Profile Name Card -->
     <div class="row mb-4">
         <div class="col-md-12">
-            <div class="card">
+            <div class="card shadow-lg rounded">
                 <div class="card-body">
                     <h2 class="text-center" style="color: #00008B">{{ profile.name }}</h2>
                 </div>
@@ -17,19 +20,21 @@
     <!-- Big Box Section -->
     <div class="row">
         <div class="col-md-12">
-            <div class="card">
+            <div class="card shadow-lg rounded">
                 <div class="card-body">
 
                     <!-- Vehicle Image, Vehicle Details, and Bid Information Section -->
                     <div class="row">
                         <!-- Vehicle Image Section -->
                         <div class="col-md-4">
-                            <img src="{{ profile.pic.url }}" class="img-fluid" alt="Vehicle Image">
+                            <div class="card shadow-lg rounded">
+                                <img src="{{ profile.pic.url }}" class="img-fluid" alt="Vehicle Image">
+                            </div>
                         </div>
 
                         <!-- Vehicle Details Section -->
                         <div class="col-md-4">
-                            <div class="card">
+                            <div class="card shadow-lg rounded">
                                 <div class="card-body">
                                     <h3 class="card-title text-center">Vehicle Details</h3>
                                     <ul class="list-group list-group-flush">
@@ -54,7 +59,7 @@
 
                         <!-- Bid Information Section -->
                         <div class="col-md-4">
-                            <div class="card">
+                            <div class="card shadow-lg rounded">
                                 <div class="card-body">
                                     <h3 class="card-title text-center">Bid Information</h3>
                                     <ul class="list-group list-group-flush">
@@ -89,4 +94,5 @@
     </div>
 </div>
 {% endblock %}
+
 
