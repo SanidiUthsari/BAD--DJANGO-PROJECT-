@@ -91,3 +91,5 @@ def search_profiles(request):
     
 def about_us_view(request):
     return render(request, 'showroom/Aboutus.html')
+def Inventory_view(request):
+    return render(request, 'showroom/Inventory.html')
