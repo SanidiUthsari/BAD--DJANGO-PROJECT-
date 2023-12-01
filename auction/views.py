@@ -18,14 +18,20 @@ def profile_detail(request, profile_id):
     profile = get_object_or_404(Profile, pk=profile_id)
     return render(request, 'auction/profile_detail.html', {'profile': profile})
 
+
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Bid
 from showroom.models import Profile
 from django.contrib.auth.decorators import login_required
+from django.utils import timezone
 
 @login_required(login_url='account:login')
 def place_bid(request, profile_id):
     profile = get_object_or_404(Profile, pk=profile_id)
+
+    # Check if bidding is still open
+    if timezone.now() >= profile.bid_end_date:
+        return render(request, 'auction/bidding_closed.html', {'profile': profile})
 
     if request.method == 'POST':
         bid_price = request.POST.get('bid_price')
@@ -33,13 +39,16 @@ def place_bid(request, profile_id):
 
         Bid.objects.create(profile=profile, user=request.user, bid_price=bid_price)
 
-        # Determine the winning bid
-        winning_bid = Bid.objects.filter(profile=profile).order_by('-bid_price').first()
+        # Check if the bid end date has passed
+        if timezone.now() <= profile.bid_end_date:
+            # Determine the highest bid after the bid end date
+            highest_bid = Bid.objects.filter(profile=profile).order_by('-bid_price').first()
 
-        # Mark the winning bid
-        if winning_bid:
-            winning_bid.is_winner = True
-            winning_bid.save()
+            # Mark the highest bid as the winner
+            if highest_bid:
+                highest_bid.is_winner = True
+                Bid.objects.filter(profile=profile).exclude(id=highest_bid.id).update(is_winner=False)
+                highest_bid.save()
 
         # Redirect to a success page or back to the profile details page
         return redirect('auction:profile_list')
