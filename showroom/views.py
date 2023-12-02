@@ -76,6 +76,8 @@ def search_profiles(request):
 
     query_name = request.GET.get('query')
     query_year = request.GET.get('year')
+    query_engine = request.GET.get('engine')
+    query_insured = request.GET.get('insured')
 
     filtered_profiles = Profile.objects.all()
 
@@ -85,9 +87,18 @@ def search_profiles(request):
     if query_year:
         filtered_profiles = filtered_profiles.filter(year=query_year)
 
+    if query_engine:
+        filtered_profiles = filtered_profiles.filter(engine=query_engine)
+
+    if query_insured:
+        filtered_profiles = filtered_profiles.filter(insured=query_insured)
+
 
     return render(request, 'showroom/search_results.html',
-              {'filtered_profiles': filtered_profiles, 'query_name': query_name, 'query_year': query_year})
-    
+              {'filtered_profiles': filtered_profiles, 'query_name': query_name, 'query_year': query_year})    
+
 def about_us_view(request):
     return render(request, 'showroom/Aboutus.html')
+
+def Inventory_view(request):
+    return render(request, 'showroom/Inventory.html')
