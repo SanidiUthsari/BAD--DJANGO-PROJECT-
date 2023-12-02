@@ -10,23 +10,41 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link btn btn-outline-light mr-2" href="{% url 'showroom:home_list' %}">Home</a>
+                        <a class="nav-link btn btn-outline-light mr-2" href="{% url 'showroom:home_list' %}"
+                           style="color: black; background-color: white;"
+                           onmouseover="this.style.color='white'; this.style.backgroundColor='black';"
+                           onmouseout="this.style.color='black'; this.style.backgroundColor='white';">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-outline-light mr-2" href="{% url 'showroom:contact' %}">Contact Us</a>
+                        <a class="nav-link btn btn-outline-light mr-2" href="{% url 'showroom:contact' %}"
+                           style="color: black; background-color: white;"
+                           onmouseover="this.style.color='white'; this.style.backgroundColor='black';"
+                           onmouseout="this.style.color='black'; this.style.backgroundColor='white';">Contact Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-outline-light" href="{% url 'auction:profile_list' %}">Bid on Profiles</a>
-                    </li>
-                    <!-- New "About Us" button -->
-                    <li class="nav-item">
-                         <a class="nav-link btn btn-outline-dark mr-2" href="{% url 'showroom:Aboutus' %}" style="border-width: 2px;">About Us</a>
-
+                        <a class="nav-link btn btn-outline-light mr-2" href="{% url 'auction:profile_list' %}"
+                           style="color: black; background-color: white;"
+                           onmouseover="this.style.color='white'; this.style.backgroundColor='black';"
+                           onmouseout="this.style.color='black'; this.style.backgroundColor='white';">Bid on Profiles</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-outline-light" href="{% url 'messaging:inbox' %}">Messages</a>
+                        <a class="nav-link btn btn-outline-light mr-2" href="{% url 'showroom:Inventory' %}"
+                           style="color: black; background-color: white; border-width: 2px;"
+                           onmouseover="this.style.color='white'; this.style.backgroundColor='black';"
+                           onmouseout="this.style.color='black'; this.style.backgroundColor='white';">Inventory</a>
                     </li>
-
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-light mr-2" href="{% url 'messaging:inbox' %}"
+                           style="color: black; background-color: white; border-width: 2px;"
+                           onmouseover="this.style.color='white'; this.style.backgroundColor='black';"
+                           onmouseout="this.style.color='black'; this.style.backgroundColor='white';">Messages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-light mr-2" href="{% url 'showroom:Aboutus' %}"
+                           style="color: black; background-color: white; border-width: 2px;"
+                           onmouseover="this.style.color='white'; this.style.backgroundColor='black';"
+                           onmouseout="this.style.color='black'; this.style.backgroundColor='white';">About Us</a>
+                    </li>
                 </ul>
             </div>
         </nav>
