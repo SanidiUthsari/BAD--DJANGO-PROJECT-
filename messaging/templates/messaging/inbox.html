@@ -1,0 +1,22 @@
+<!-- messaging/templates/messaging/inbox.html -->
+
+{% extends 'messaging/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Inbox</h2>
+    <ul class="list-group">
+        {% for sender, latest_message in latest_messages.items %}
+          <a href="{% url 'messaging:view_conversation' receiver_id=sender.id %}">
+              <li class="list-group-item {% if not latest_message.is_read %}font-weight-bold{% endif %}">
+                  <div class="d-flex justify-content-between align-items-center">
+                      <h5 class="mb-0">{{ sender.username }}</h5>
+                      <small class="text-muted">{{ latest_message.timestamp|date:"F d, Y H:i" }}</small>
+                  </div>
+                  <p class="mb-1">{{ latest_message.content }}</p>
+              </li>
+          </a>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

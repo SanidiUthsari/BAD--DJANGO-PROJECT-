@@ -1,0 +1,75 @@
+<div style="display: flex; background-color: #000000; padding: 20px;">
+          <hr style="border: 1px solid rgba(0, 0, 0, 0.5); margin-top: 20px;">
+
+    <div style="flex: 1; padding-right: 20px; ">
+        <h1 style="color: #DAA520; text-align: center; margin-top: 20px; font-weight: bold; font-family: 'Arial', sans-serif;">MEMBERSHIP OPTIONS</h1>
+        <p style="text-align: center; color: #F0F8FF; margin: 0 20px; font-family: 'Arial', sans-serif; font-size: 18px; font-weight: bold; text-align: justify;">
+        Enroll in our car membership program to access a spectrum of privileges, encompassing discounted services, expedited priority bookings, and bespoke, limited-time offers meticulously crafted to elevate and redefine your experience.
+        </p>
+        <br>
+
+
+        <div style="display: flex; justify-content: center; font-family: Arial, sans-serif;">
+              <ul style="list-style: none; padding: 0; display: flex;">
+                <li style="color: #F0F8FF; display: flex; align-items: center; margin-right: 20px;">
+                  <span style="color: #DAA520; margin-right: 5px;">✔</span> ANNUAL PAYMENT
+                </li>
+                <li style="color: #F0F8FF; display: flex; align-items: center; margin-right: 20px;">
+                  <span style="color: #DAA520; margin-right: 5px;">✔</span> REFUND AVAILABLE
+                </li>
+                <li style="color: #F0F8FF; display: flex; align-items: center;">
+                  <span style="color: #DAA520; margin-right: 5px;">✔</span> INFINITY ACCESS
+                </li>
+              </ul>
+        </div>
+        <div style="text-align: center; margin-top: 0.125px;">
+        <a href="{% url 'account:register' %}" class="btn btn-outline-dark" style="background-color: #DAA520; color: black; padding: 10px 20px; text-decoration: none;">BECOME A MEMBER</a>
+        </div>
+    </div>
+
+  <!-- Membership Slideshow -->
+<div style="flex: 1;">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <!-- First Membership Slide -->
+                <div style="flex: 1; margin: 10px; border: 1px solid #ccc; padding: 20px; border-radius: 10px; background-color: #B0C4DE;">
+                    <h2 style="margin-top: 0; text-align: center; font-family: Arial, sans-serif; font-weight: bold; color: #00008B;">Essential Seller</h2>
+                    <p style="text-align: center;">Our Starter Package, the Essential Seller tier, empowers newcomers with essential tools. Create 5 detailed listings, connect with buyers, and access basic analytics for performance insights. Perfect for those starting their car-selling journey, offering a straightforward approach to online sales.</p>
+                    <strong style="display: block; text-align: center; color: green;">Starting from LKR 5,000</strong>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <!-- Second Membership Slide -->
+                <div style="flex: 1; margin: 10px; border: 1px solid #ccc; padding: 20px; border-radius: 10px; background-color: #B0C4DE;">
+                    <h2 style="margin-top: 0; text-align: center; font-family: Arial, sans-serif; font-weight: bold; color: #00008B;">Premium Seller</h2>
+                    <p style="text-align: center;">The Premium Seller tier, our Advanced Package, elevates visibility and sales potential. Gain priority placement, unlimited listings, and detailed analytics for effective selling strategies. Utilize promotional tools and dedicated support for optimized selling, perfect for sellers seeking increased exposure and advanced insights.</p>
+                    <strong style="display: block; text-align: center; color: green;">Starting from LKR 10,000</strong>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <!-- Third Membership Slide -->
+                <div style="flex: 1; margin: 10px; border: 1px solid #ccc; padding: 20px; border-radius: 10px; background-color: #B0C4DE;">
+                    <h2 style="margin-top: 0; text-align: center; font-family: Arial, sans-serif; font-weight: bold; color: #00008B;">Elite Seller</h2>
+                    <p style="text-align: center;">Our Professional Package, the Elite Seller tier, caters to high-volume sellers and dealerships. Enjoy VIP placement, dedicated account management, specialized promotions, advanced security, and exclusive discounts. Tailored for top-tier sellers aiming for maximum exposure, security, and market dominance.</p>
+                    <strong style="display: block; text-align: center; color: green;">Starting from LKR 50,000</strong>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+         <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+
+</div>

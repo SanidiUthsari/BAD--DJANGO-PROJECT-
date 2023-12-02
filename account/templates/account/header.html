@@ -1,35 +1,26 @@
-<nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(to left,#4682B4, #000080, #191970, #000000);">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(to right,#4682B4, #000080, #191970, #000000);">
     <div class="container">
         <!-- Left-aligned items -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                MENU
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-outline-light mr-2" href="{% url 'showroom:home_list' %}"
-                           style="color: black; background-color: white;"
-                           onmouseover="this.style.color='white'; this.style.backgroundColor='black';"
-                           onmouseout="this.style.color='black'; this.style.backgroundColor='white';">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-outline-light mr-2" href="{% url 'showroom:contact' %}"
-                           style="color: black; background-color: white;"
-                           onmouseover="this.style.color='white'; this.style.backgroundColor='black';"
-                           onmouseout="this.style.color='black'; this.style.backgroundColor='white';">Contact Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-outline-light mr-2" href="{% url 'showroom:Aboutus' %}"
-                           style="color: black; background-color: white; border-width: 2px;"
-                           onmouseover="this.style.color='white'; this.style.backgroundColor='black';"
-                           onmouseout="this.style.color='black'; this.style.backgroundColor='white';">About Us</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <a href="{% url 'showroom:new_profile' %}" type="button" class="btn btn-warning">SELL YOUR VEHICLE</a>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link btn btn-outline-dark mr-2" href="{% url 'showroom:home_list' %}" style="border-width: 2px;">Home</a>
+            </li>
+             <li class="nav-item">
+                <a class="nav-link" href="{% url 'auction:profile_list' %}">Bid on Profiles</a>
+            </li>
+        </ul>
+
+        <!-- Brand name in the middle -->
+        <a class="navbar-brand mx-auto" href="#">AUTO LANKA</a>
+
+        <!-- Right-aligned items -->
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link btn btn-outline-dark mr-2" href="{% url 'account:login' %}" style="border-width: 2px;">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link btn btn-outline-dark" href="{% url 'account:register' %}" style="border-width: 2px;">SignUp</a>
+            </li>
+        </ul>
     </div>
 </nav>

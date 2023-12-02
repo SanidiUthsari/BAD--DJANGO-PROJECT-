@@ -1,0 +1,26 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Load Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>ASIA MOTORS</title>
+</head>
+
+<body>
+    {% include 'messaging/header.html' %}
+
+    <p></p>
+    
+    <main role="main" class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    {% include 'messaging/footer.html' %}
+    
+    <!-- Load Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
