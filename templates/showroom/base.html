@@ -1,5 +1,4 @@
 {% load static %}
-{% now 'Y-m-d H:i:s' as now %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,11 +11,7 @@
     {% include 'showroom/search_bar.html' %}
     {% include 'showroom/header.html' %}
 
-    <br>
-
-    <p></p>
-
-    <main role="main" class="container">
+    <main role="main" class="container-fluid" style="background: linear-gradient(to left,#F5FFFA,#F0FFFF,#F5FFFA);">
         {% block content %}{% endblock %}
     </main>
 
