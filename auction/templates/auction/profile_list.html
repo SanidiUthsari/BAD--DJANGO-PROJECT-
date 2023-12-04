@@ -7,22 +7,25 @@
         {% for profile in profiles %}
             <li class="list-group-item">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0">
-                        <a href="{% url 'auction:profile_detail' profile.id %}">{{ profile.name }}</a>
-                    </h5>
-                    <small class="text-muted">
-                        Bid Start Date: {{ profile.bid_start_date|date:"F d, Y" }}
-                    </small>
+                    <div>
+                        <h5 class="mb-0">
+                            <a href="{% url 'auction:profile_detail' profile.id %}" class="text-decoration-none">{{ profile.name }}</a>
+                        </h5>
+                        <small class="text-muted">
+                            Bid Start Date: {{ profile.bid_start_date|date:"F d, Y" }}
+                        </small>
+                    </div>
+                    <div>
+                        <small class="text-muted">Bid End Date: {{ profile.bid_end_date|date:"F d, Y" }}</small>
+                        <!-- Add a <span> element to display the remaining time -->
+                        <p class="mb-1">Time Remaining: <span class="remaining-time badge badge-secondary" data-bid-end="{{ profile.bid_end_date|date:'Y-m-d H:i:s' }}"></span></p>
+                    </div>
                 </div>
-                <p class="mb-1">Bid End Date: {{ profile.bid_end_date|date:"F d, Y" }}</p>
-
-                <!-- Add a <span> element to display the remaining time -->
-                <p class="mb-1">Time Remaining: <span class="remaining-time" data-bid-end="{{ profile.bid_end_date|date:'Y-m-d H:i:s' }}"></span></p>
 
                 {% with winning_bid=profile.get_winning_bid %}
                     {% if winning_bid %}
                         <p class="text-success">Winner: {{ winning_bid.user.username }}</p>
-                        <p class="text-success">Winning Bid Amount: {{ winning_bid.bid_price }}</p>
+                        <p class="text-success">Winning Bid Amount: ${{ winning_bid.bid_price }}</p>
                     {% endif %}
                 {% endwith %}
             </li>
