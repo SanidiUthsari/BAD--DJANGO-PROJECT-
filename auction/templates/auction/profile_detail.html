@@ -6,7 +6,7 @@
         <div class="card-body">
             <h2 class="card-title">{{ profile.name }}</h2>
             <p class="card-text">Variant: {{ profile.variant }}</p>
-            <p class="card-text">Price: ${{ profile.price }}</p>
+            <p class="card-text">Price: LKR{{ profile.price }}</p>
             <p class="card-text">Bid Start Date: {{ profile.bid_start_date|date:"F d, Y H:i" }}</p>
             <p class="card-text">Bid End Date: {{ profile.bid_end_date|date:"F d, Y H:i" }}</p>
 
@@ -26,7 +26,7 @@
                     <label for="bid_price">Your Bid:</label>
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <span class="input-group-text">$</span>
+                            <span class="input-group-text">LKR</span>
                         </div>
                         <input type="number" name="bid_price" step="any" class="form-control" required>
                     </div>
