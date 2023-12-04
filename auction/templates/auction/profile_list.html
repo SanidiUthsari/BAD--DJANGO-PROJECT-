@@ -25,7 +25,7 @@
                 {% with winning_bid=profile.get_winning_bid %}
                     {% if winning_bid %}
                         <p class="text-success">Winner: {{ winning_bid.user.username }}</p>
-                        <p class="text-success">Winning Bid Amount: ${{ winning_bid.bid_price }}</p>
+                        <p class="text-success">Winning Bid Amount: LKR{{ winning_bid.bid_price }}</p>
                     {% endif %}
                 {% endwith %}
             </li>
