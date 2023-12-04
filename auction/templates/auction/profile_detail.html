@@ -2,29 +2,38 @@
 
 {% block content %}
 <div class="container mt-4">
-    <h2>{{ profile.name }}</h2>
-    <p>Variant: {{ profile.variant }}</p>
-    <p>Price: ${{ profile.price }}</p>    
-    <p>Bid Start Date: {{ profile.bid_start_date|date:"F d, Y H:i" }}</p>
-    <p>Bid End Date: {{ profile.bid_end_date|date:"F d, Y H:i" }}</p>
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">{{ profile.name }}</h2>
+            <p class="card-text">Variant: {{ profile.variant }}</p>
+            <p class="card-text">Price: ${{ profile.price }}</p>
+            <p class="card-text">Bid Start Date: {{ profile.bid_start_date|date:"F d, Y H:i" }}</p>
+            <p class="card-text">Bid End Date: {{ profile.bid_end_date|date:"F d, Y H:i" }}</p>
 
-    <!-- Additional information for bidding -->
-    {% if profile.bid_end_date > timezone.now %}
-        <p>Time Remaining: {{ profile.bid_end_date|timeuntil }}</p>
-        <p>Current Highest Bid: {{ profile.get_highest_bid_amount|default:"No bids yet" }}</p>
-    {% else %}
-        <p>Bidding Closed</p>
-        <p>Final Winning Bid: {{ profile.get_final_winning_bid_amount|default:"No bids" }}</p>
-    {% endif %}
+            <!-- Additional information for bidding -->
+            {% if profile.bid_end_date > timezone.now %}
+                <p class="card-text">Time Remaining: {{ profile.bid_end_date|timeuntil }}</p>
+                <p class="card-text">Current Highest Bid: {{ profile.get_highest_bid_amount|default:"No bids yet" }}</p>
+            {% else %}
+                <p class="card-text text-danger">Bidding Closed</p>
+                <p class="card-text">Final Winning Bid: {{ profile.get_final_winning_bid_amount|default:"No bids" }}</p>
+            {% endif %}
 
-    <!-- Bidding form -->
-    <form method="post" action="{% url 'auction:place_bid' profile.id %}">
-        {% csrf_token %}
-        <div class="form-group">
-            <label for="bid_price">Your Bid:</label>
-            <input type="number" name="bid_price" step="any" class="form-control" required>
+            <!-- Bidding form -->
+            <form method="post" action="{% url 'auction:place_bid' profile.id %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="bid_price">Your Bid:</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">$</span>
+                        </div>
+                        <input type="number" name="bid_price" step="any" class="form-control" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Place Bid</button>
+            </form>
         </div>
-        <button type="submit" class="btn btn-primary">Place Bid</button>
-    </form>
+    </div>
 </div>
 {% endblock %}
