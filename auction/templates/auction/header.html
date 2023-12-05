@@ -1,35 +1,71 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">ASIA MOTORS</a>
-    <div class="mr-auto">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'account:login' %}">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'account:register' %}">SignUp</a>
-            </li>
-        </ul>
+<nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(to left,#4682B4, #000080, #191970, #000000);">
+    <div class="container">
+        <!-- Left-aligned items -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                MENU
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link btn  mr-2" href="{% url 'showroom:home_list' %}"
+                           style="color: black; background-color: grey;"
+                           onmouseover="this.style.color='grey'; this.style.backgroundColor='black';"
+                           onmouseout="this.style.color='black'; this.style.backgroundColor='grey';">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn mr-2" href="{% url 'showroom:contact' %}"
+                           style="color: black; background-color: grey;"
+                           onmouseover="this.style.color='grey'; this.style.backgroundColor='black';"
+                           onmouseout="this.style.color='black'; this.style.backgroundColor='grey';">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn  mr-2" href="{% url 'auction:profile_list' %}"
+                           style="color: black; background-color: grey;"
+                           onmouseover="this.style.color='grey'; this.style.backgroundColor='black';"
+                           onmouseout="this.style.color='black'; this.style.backgroundColor='grey';">Bid on Profiles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn  mr-2" href="{% url 'showroom:Inventory' %}"
+                           style="color: black; background-color: grey; border-width: 2px;"
+                           onmouseover="this.style.color='grey'; this.style.backgroundColor='black';"
+                           onmouseout="this.style.color='black'; this.style.backgroundColor='grey';">Inventory</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn  mr-2" href="{% url 'messaging:inbox' %}"
+                           style="color: black; background-color: grey; border-width: 2px;"
+                           onmouseover="this.style.color='grey'; this.style.backgroundColor='black';"
+                           onmouseout="this.style.color='black'; this.style.backgroundColor='grey';">Messages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn  mr-2" href="{% url 'showroom:Aboutus' %}"
+                           style="color: black; background-color: grey; border-width: 2px;"
+                           onmouseover="this.style.color='grey'; this.style.backgroundColor='black';"
+                           onmouseout="this.style.color='black'; this.style.backgroundColor='grey';">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'showroom:new_profile' %}" type="button" class="btn btn-warning" style="padding: 9px 30px; font-size: 16px;">SELL YOUR VEHICLE</a>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+
+{% if user.is_authenticated %}
+<div class="nav-item" style="position: relative; display: flex; align-items: center; margin-left: auto;"> <!-- Set margin-left to auto -->
+    <div style="width: 40px; height: 40px; border-radius: 50%; background-color: white; color: #333; display: flex; justify-content: center; align-items: center; font-weight: bold; font-size: 18px;">
+        {{ user.username|first|upper }}
+        <div style="width: 12px; height: 12px; background-color: green; border-radius: 50%; margin-left: 5px;"></div>
     </div>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="{% url 'showroom:home_list' %}">Home</a>
-            </li>
-            <!-- Add more links as needed -->
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'showroom:contact' %}">Contact Us</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'account:logout' %}">Logout</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'auction:profile_list' %}">Bid on Profiles</a>
-            </li>
-        </ul>
+    <div style="margin-left: 10px; margin-top: 10px;"> <!-- Increased margin-top to move the text further down -->
+        <p style="color: white; font-weight: bold;">Hi, {{ user.username }}</p>
+    </div>
+</div>
+{% endif %}
+
     </div>
 </nav>
+
 
