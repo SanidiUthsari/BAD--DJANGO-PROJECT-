@@ -13,56 +13,7 @@
                         {% csrf_token %}
                         {{ formset.management_form }}
                         {% for form in formset %}
-                            <div class="form-group">
-                                <label for="{{ form.name.id_for_label }}">Profile Name:</label>
-                                {{ form.name }}
-                            </div>
-
-                            <div class="form-group">
-                                <label for="{{ form.variant.id_for_label }}">Variant:</label>
-                                {{ form.variant }}
-                            </div>
-
-                            <div class="form-group">
-                                <label for="{{ form.engine.id_for_label }}">Engine:</label>
-                                {{ form.engine }}
-                            </div>
-
-                            <div class="form-group">
-                                <label for="{{ form.year.id_for_label }}">Model Year:</label>
-                                {{ form.year }}
-                            </div>
-
-                            <div class="form-group">
-                                <label for="{{ form.insured.id_for_label }}">Insurance:</label>
-                                {{ form.insured }}
-                            </div>
-
-                            <div class="form-group">
-                                <label for="{{ form.pic.id_for_label }}">Profile Picture:</label>
-                                {{ form.pic }}
-                            </div>
-
-                            <div class="form-group">
-                                <label for="{{ form.addpic.id_for_label }}">Additional Picture:</label>
-                                {{ form.addpic }}
-                            </div>
-
-                            <div class="form-group">
-                                <label for="{{ form.price.id_for_label }}">Price:</label>
-                                {{ form.price }}
-                            </div>
-
-                            <div class="form-group">
-                                <label for="{{ form.Mileage.id_for_label }}">Mileage (in KMs):</label>
-                                {{ form.Mileage }}
-                            </div>
-
-                            <div class="form-group">
-                                <label for="{{ form.contact.id_for_label }}">Contact Email:</label>
-                                {{ form.contact }}
-                            </div>
-
+                           {{ form.as_p }}
                         {% endfor %}
                         <button type="submit" class="btn btn-warning btn-block mt-3">Submit</button>
                     </form>

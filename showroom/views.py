@@ -11,7 +11,7 @@ def profileListView(request):
     sort_by = request.GET.get('sort')
 
     if sort_by not in ['name', 'variant', 'year']:
-        sort_by = 'bid_end_date'
+        sort_by = '-bid_end_date'
 
     # Fetch profiles and apply sorting
     all_profiles = Profile.objects.all().order_by(sort_by)
