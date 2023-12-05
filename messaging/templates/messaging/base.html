@@ -1,12 +1,12 @@
 {% load static %}
-
+{% now 'Y-m-d H:i:s' as now %}
 <!DOCTYPE html>
 <html style="height: 100%;">
 
 <head>
     <!-- Load Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <title>ASIA MOTORS</title>
+    <title>AUTO LANKA | The No.1 Car Selling Platform</title>
     <style>
         body {
             display: flex;
@@ -21,14 +21,15 @@
 </head>
 
 <body>
+    {% include 'showroom/search_bar.html' %}
     {% include 'showroom/header.html' %}
 
     <p></p>
 
-    <main role="main" class="container">
+    <main role="main" class="container-fluid" style="background: linear-gradient(to left,#F5FFFA,#F0FFFF,#F5FFFA);">
         {% block content %}{% endblock %}
     </main>
-
+    {% include 'showroom/membership.html' %}
     {% include 'showroom/footer.html' %}
 
     <!-- Load Bootstrap JS -->
