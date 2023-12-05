@@ -36,9 +36,7 @@
                                     <h3 class="card-title text-center">Vehicle Details</h3>
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item"><strong>Variant:</strong> {{ profile.variant }}</li>
-                                        <li class="list-group-item"><strong>Engine:</strong> {{ profile.engine }}</li>
-                                        <li class="list-group-item"><strong>Engine Details:</strong> Add details here</li>
-                                        <li class="list-group-item"><strong>Model Year:</strong> {{ profile.year }}</li>
+                                        <li class="list-group-item"><strong>Engine:</strong> {{ profile.engine }}</li><li class="list-group-item"><strong>Model Year:</strong> {{ profile.year }}</li>
                                         <li class="list-group-item">
                                             <strong>Insurance:</strong>
                                             {% if profile.insured %}
@@ -66,7 +64,7 @@
                                             <strong>Winning Bid:</strong>
                                             {% with winning_bid=profile.get_winning_bid %}
                                                 {% if winning_bid %}
-                                                    {{ winning_bid.amount }} ({{ winning_bid.bidder.username }})
+                                                LKR{{ winning_bid.bid_price }} by {{ winning_bid.user.username }}
                                                 {% else %}
                                                     No winning bid yet.
                                                 {% endif %}
