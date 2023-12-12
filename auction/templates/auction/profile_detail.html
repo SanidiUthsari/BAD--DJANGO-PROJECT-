@@ -33,13 +33,23 @@
                                         <li class="list-group-item"><strong>Bid End Date:</strong> {{ profile.bid_end_date|date:"F d, Y H:i" }}</li>
 
                                         <!-- Additional information for bidding -->
-                                        {% if profile.bid_end_date > timezone.now %}
-                                            <li class="list-group-item"><strong>Time Remaining:</strong> {{ profile.bid_end_date|timeuntil }}</li>
-                                            <li class="list-group-item"><strong>Current Highest Bid:</strong> {{ profile.get_highest_bid_amount|default:"No bids yet" }}</li>
+                                        {% with formatted_bid_end_date=profile.bid_end_date|date:'Y-m-d H:i:s' %}
+                                        {% if formatted_bid_end_date > now %}
+                                            {% with winning_bid=profile.get_winning_bid %}
+                                                {% if winning_bid %}                                            
+                                                    <li class="list-group-item"><strong>Time Remaining:</strong> {{ profile.bid_end_date|timeuntil }}</li>
+                                                    <li class="list-group-item"><strong>Current Highest Bid:</strong> {{ winning_bid.bid_price|default:"No bids yet" }}</li>
+                                                {% endif %}
+                                            {% endwith %}
                                         {% else %}
-                                            <li class="list-group-item text-danger"><strong>Bidding Closed</strong></li>
-                                            <li class="list-group-item"><strong>Final Winning Bid:</strong> {{ profile.get_final_winning_bid_amount|default:"No bids" }}</li>
+                                            {% with winning_bid=profile.get_winning_bid %}
+                                                {% if winning_bid %}                                            
+                                                    <li class="list-group-item text-danger"><strong>Bidding Closed</strong></li>
+                                                    <li class="list-group-item"><strong>Final Winning Bid:</strong> {{ winning_bid.bid_price|default:"No bids" }}</li>
+                                                {% endif %}
+                                            {% endwith %}                                               
                                         {% endif %}
+                                        {% endwith %}
                                     </ul>
                                 </div>
                             </div>
